@@ -1,12 +1,32 @@
+import java.util.Enumeration;
+import java.util.Hashtable;
+
 public class ConcreteDictionary extends Dictionary {
 	@Override
 	public void add(String mot) {
-		// A compléter
+		char index = mot.charAt(0);
+		if (this.Dico.containsKey(index)){
+			this.Dico.get(index).put(mot, 1);
+		}else{
+			Hashtable<String,Integer> NewElem = new Hashtable<String,Integer>();
+			NewElem.put(mot, 1);
+			this.Dico.put(index, NewElem);
+		}
 	}
 
 	@Override
 	public boolean find(String mot) {
-		// A compléter
-		return false;
+		boolean found = false;
+		Enumeration<Character> keys = this.Dico.keys();
+		char current = keys.nextElement();
+		while(keys.hasMoreElements() && !found){
+			if(Dico.get(current).containsKey(mot)){
+				found = true;
+			}else{
+				current = keys.nextElement();
+			}
+		}
+
+		return found;
 	}
 }
