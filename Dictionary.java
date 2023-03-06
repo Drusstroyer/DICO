@@ -4,6 +4,7 @@ import java.util.Hashtable;
 /* https://www.geeksforgeeks.org/how-to-iterate-through-hashtable-in-java/ */
 public abstract class Dictionary {
 	Hashtable<Character,Hashtable<String,Integer>> Dico;
+	
 	public Dictionary(){
 		Dico = new Hashtable<Character,Hashtable<String,Integer>>();
 
