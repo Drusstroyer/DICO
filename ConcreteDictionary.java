@@ -2,6 +2,12 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class ConcreteDictionary extends Dictionary {
+	Hashtable<Character,Hashtable<String,Integer>> Dico;
+	
+	public ConcreteDictionary(){
+		Dico = new Hashtable<Character,Hashtable<String,Integer>>();
+
+	}
 	@Override
 	public void add(String mot) {
 		char index = mot.charAt(0);
