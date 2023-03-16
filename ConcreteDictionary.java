@@ -36,21 +36,38 @@ public class ConcreteDictionary extends Dictionary {
 
                     Noed next = new Noed("");
                     courant.left = next;
-                    add_rec(mot.substring(1), courant.left);
-                }else{
                     
-                    add_rec(mot.substring(1), courant.left);
                 }
+                    
+                    if(add_rec(mot.substring(1), courant.left)){
+                        courant.end = true;                        
+                    }
+                
             }else if(courant.value.compareTo(index) == 0){
 
                 if(courant.left == null){
 
                     Noed next = new Noed("");
                     courant.left = next;
-                    add_rec(mot.substring(1), courant.left);
-                }else{
-
-                    add_rec(mot.substring(1), courant.left);
+                    
+                }
+                if(add_rec(mot.substring(1), courant.left)){
+                    courant.end = true;                        
+                }
+                
+            }else if(courant.value.compareTo(index) > 0){
+                if(courant.right.value.compareTo(index) < 0){
+                    
+                    Noed nouveau = new Noed(index);
+                    nouveau.right = courant.right;
+                    courant.right = nouveau;
+                    Noed next = new Noed("");
+                    nouveau.left = next;
+                    courant = nouveau;
+                    
+                }
+                if(add_rec(mot.substring(1), courant.left)){
+                    courant.end = true;                        
                 }
             }
 
