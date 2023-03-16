@@ -81,8 +81,39 @@ public class ConcreteDictionary extends Dictionary {
 
 	@Override
 	public boolean find(String mot) {
-        return false;
+        boolean found = false;
+        int i =0;
+        Noed courant = this.Dico;
+        
+        while(found != true){
+            String index = mot.substring(i,i+1);
+            if(index != null){
+                
+                if(courant.value.compareTo(index) ==0){
+                    if(courant.left != null){
+                        courant = courant.left;
+                        
+                    }          
+                    i++;              
+                }else if(courant.value.compareTo(index) > 0){
+                    if(courant.right != null){
+                        courant = courant.right;
+                    }
+                    
+                }
+            }else{
+                if(courant.end == true){
+                    found = true;
+                }else{
+                    return false;
+                }
+                
+            }
+
+        }
+        return found;
         
 	}
+
 
 }
